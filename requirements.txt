@@ -1,0 +1,9 @@
+torch
+transformers
+sentencepiece
+sqlalchemy
+python-dotenv
+flask
+langchain
+langchain-ollama
+ollama

@@ -1,0 +1,373 @@
+:root {
+    --bg-color: #f0f4f8; /* Ajustado para um tom suave e claro */
+    --sidebar-bg: #e0e6ed; /* Tom neutro, para complementar o azul principal */
+    --chat-bg: #ffffff;
+    --text-color: #1f2937;
+    --border-color: #cbd5e0; /* Border mais leve */
+    --primary-color: #003366; /* Julius Baer Blue */
+    --hover-color: #336699; /* Um tom mais claro para o hover */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+}
+
+.chat-container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        left: -380px;
+        top: 0;
+        bottom: 0;
+        width: 250px;
+        background-color: var(--sidebar-bg);
+        z-index: 1000;
+        transition: left 0.3s ease;
+    }
+
+    .sidebar.open {
+        left: 0;
+    }
+
+    .sidebar-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+    }
+
+    .sidebar-overlay.open {
+        display: block;
+    }
+}
+
+.new-chat-btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 0.25rem;
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+.new-chat-btn:hover {
+    background-color: var(--hover-color);
+    color: white;
+}
+
+.conversation-history {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.main-chat {
+    flex-grow: 1;
+    flex-direction: column;
+}
+
+header {
+    background-color: var(--chat-bg);
+    padding: 1rem;
+    align-items: center;
+}
+
+.menu-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: none;
+}
+
+.spacer {
+    width: 24px;
+}
+
+.chat-messages {
+    flex-grow: 1;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.message {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.message.user {
+    justify-content: flex-end;
+}
+
+.message-content {
+    max-width: 80%;
+    padding: 0.7rem 1.2rem;
+    border-radius: 1rem;
+}
+
+.user .message-content {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.assistant .message-content {
+    background-color: var(--sidebar-bg);
+}
+
+.message-form {
+    display: flex;
+    padding: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.message-form input {
+    flex-grow: 1;
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.25rem;
+    margin-right: 0.5rem;
+}
+
+.message-form button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .menu-btn {
+        display: block;
+    }
+}
+
+.message.typing .message-content {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+.message.typing .dot {
+    width: 8px;
+    height: 8px;
+    margin: 0 4px;
+    background-color: #a0aec0;
+    border-radius: 50%;
+    animation: bounce 1.4s infinite ease-in-out both;
+}
+
+.message.typing .dot:nth-child(1) {
+    animation-delay: -0.32s;
+}
+
+.message.typing .dot:nth-child(2) {
+    animation-delay: -0.16s;
+}
+
+@keyframes bounce {
+    0%, 80%, 100% {
+        transform: scale(0);
+    } 40% {
+        transform: scale(1);
+    }
+}
+
+.conversation-item {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.conversation-item:hover {
+    background-color: var(--hover-color);
+    color: white;
+}
+
+.conversation-item.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+
+
+.main-chat {
+    flex-grow: 1;
+    flex-direction: column;
+}
+
+.menu-btn svg {
+    stroke: #003366;
+}
+
+.spacer {
+    width: 24px;
+}
+
+.message-form {
+    display: flex;
+    padding: 1rem;
+    border-top: 1px solid #cbd5e0; /* Border superior suave */
+    background-color: #f0f4f8;
+}
+
+.message-form input {
+    flex-grow: 1;
+    padding: 0.5rem;
+    border: 1px solid #cbd5e0;
+    border-radius: 0.25rem;
+    margin-right: 0.5rem;
+    font-size: 1rem;
+    color: #1f2937;
+}
+
+.message-form input::placeholder {
+    color: #889bbf; /* Placeholder com tom suave */
+}
+
+.message-form button {
+    background-color: #003366; /* Julius Baer Blue */
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.message-form button svg {
+    stroke: white;
+}
+
+
+.logo-container {
+    width: 82%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 20px; /* Ajuste conforme necessário */
+}
+
+.svg-wrapper {
+    width: 200px; /* Ajuste o tamanho conforme necessário */
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.svg-wrapper svg {
+    width: 100%; /* Ajusta o SVG para ocupar todo o contêiner */
+    height: auto;
+}
+
+
+.message-form textarea {
+    flex-grow: 1;
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.25rem;
+    margin-right: 0.5rem;
+    font-size: 1rem;
+    color: var(--text-color);
+    resize: vertical; /* Permite ao usuário redimensionar verticalmente */
+    min-height: 2.5rem; /* Altura mínima para o campo */
+    max-height: 150px; /* Altura máxima para o campo */
+}
+
+.message-form textarea::placeholder {
+    color: #889bbf; /* Placeholder com tom suave */
+}
+
+
+.main-chat {
+    flex-direction: column;
+    position: relative;
+    height: 100vh;
+}
+
+.chat-messages {
+    margin-right: 24%;
+    margin-left: 12%;
+    flex-grow: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    background-color: #ffffff;
+    margin-bottom: 80px; /* Espaço para o formulário */
+}
+
+.message-form {
+    padding: 5px !important;
+    border-radius: 10px;
+    position: fixed;
+    bottom: 3px;
+    left: 55%;
+    transform: translateX(-50%);
+    width: 50%;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-top: 1px solid var(--border-color);
+    background-color: #f0f4f8;
+    z-index: 10;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Sombra opcional para destacar o formulário */
+}
+
+.message-form textarea {
+    flex-grow: 1;
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.25rem;
+    margin-right: 0.5rem;
+    font-size: 1rem;
+    color: #1f2937;
+    resize: none;
+    min-height: 2.5rem;
+    max-height: 150px; /* Define um limite máximo de altura */
+    overflow-y: auto; /* Remove a barra de rolagem vertical */
+}
+
+.message-form textarea::placeholder {
+    color: #889bbf;
+}
+
+.message-form button {
+    background-color: #003366;
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
